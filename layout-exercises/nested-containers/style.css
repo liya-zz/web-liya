@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.outermost {
+    width: 90%;
+    background-color: lightgray;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.second {
+    width: 50%;
+    background-color: lightblue;
+    padding: 20px;
+}
+
+.third {
+    width: 50%;
+    background-color: lightgreen;
+    padding: 20px;
+}
+
+.innermost {
+    width: 50%;
+    background-color: lightcoral;
+    padding: 20px;
+}

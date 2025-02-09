@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.left-column {
+    width: 30%;
+    background-color: lightblue;
+    padding: 20px;
+}
+
+.right-column {
+    width: 70%;
+    background-color: lightcoral;
+    padding: 20px;
+}
