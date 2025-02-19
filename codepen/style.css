@@ -1,0 +1,332 @@
+/* Question 1: Change one word to color */
+p:nth-of-type(1) span {
+    color: red; /* You can wrap a word in <span> inside HTML */
+  }
+  
+  /* Question 2: Make "Magic" rainbow-colored */
+  p:nth-of-type(2) span {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+  
+  /* Question 3: Highlight text with a yellow background */
+  .highlight-me {
+    background-color: yellow;
+  }
+  
+  /* Question 4: If the span is also affected, it's because of shared class name */
+  /* If span gets affected, it's due to the same "highlight-me" class */
+  
+  /* Question 5: Make divs appear side by side */
+  .side-by-side {
+    display: inline-block; /* Aligns divs horizontally */
+    width: 50px;
+    height: 50px;
+    background-color: lightblue;
+    margin: 10px; /* Space between them is due to margin 10px */
+  }
+  
+  /* Question 6: Make div disappear without deleting it */
+  .gone {
+    display: none;
+  }
+  
+  /* Question 7: Increase the orange area */
+  .increase-orange {
+    padding: 20px;
+    background-color: orange;
+    display: inline-block;
+  }
+  
+  /* Question 8: Separate divs so they don’t look like a block */
+  .separate-me {
+    margin-bottom: 10px;
+    background-color: lightgray;
+    height: 50px;
+    width: 100px;
+  }
+  
+  /* Question 9: Improve button user-friendliness */
+  .user-friendly {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: lightblue;
+    text-decoration: none;
+    margin: 5px;
+    border: 1px solid gray;
+  }
+  
+  /* Question 10: Center text vertically inside the square */
+  .static {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    background-color: lightgray;
+  }
+  
+  /* Question 11: Move div 50px left and 50px up */
+  .left-upward {
+    position: relative;
+    left: -50px;
+    top: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: lightcoral;
+  }
+  
+  /* Question 12: Fix button at top-right */
+  .fixed-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Question 13: If you only set top: 20px; and left: 40px; without defining a position (like relative, absolute, or fixed), the div will not move because top and left only work on positioned elements.
+  
+  By default, a div has position: static;, which means top and left are ignored.
+  
+  Solution:
+  To make it move, you need to set a position like:
+  
+  position: relative; → Moves the element relative to its normal position
+  position: absolute; → Moves the element relative to its nearest positioned ancestor
+  position: fixed; → Stays fixed on the screen
+   */
+  .position-20-40 {
+    top: 20px;
+    left: 40px;
+    background-color:#bb00ff;
+    width:200px;
+    height:100px;
+  }
+  
+  /* Question 14: Move only the blue div without affecting others */
+  .dont-move{
+    width:200px;
+    height:50px;
+    background-color:grey;
+    display:inline-block
+  }
+  .move-me {
+    position: relative;
+    left: -30px;
+    top: -30px;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+  
+  }
+  /* Question 15: Set display to inline-block */
+  .position-20-40,
+  .move-me,
+  .dont-move {
+    display: inline-block;
+  }
+  
+  /* Answer: The blue div (.move-me) behaves differently now because inline-block elements flow inline like text, rather than stacking in block layout. This means it moves within the same line as the other divs rather than repositioning absolutely. */
+  
+  
+  /* Question 16: Center the smaller square over the larger one */
+  .larger-div {
+    position: relative;  /* Acts as the reference for absolute positioning */
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+  }
+  
+  .smaller-div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the smaller div */
+  }
+  
+  /* Question 17: Move the blue div inside the parent div */
+  
+  .parent-div {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: lightgray;
+  }
+  
+  /* Child div (blue box) */
+  .child-div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+  }
+  
+  /* a. Move to bottom-left */
+  .child-div {
+    bottom: 0;
+    left: 0;
+  }
+  
+  /* b. Move to top-right */
+  .child-div {
+    top: 0;
+    right: 0;
+  }
+  
+  /* c. Center the blue div inside the grey div */
+  .child-div {
+    margin: auto;
+  }
+  /* answer: Yes, it is possible to center the blue div inside the grey div only using top, left, bottom, and right by setting all to 0 and applying margin: auto; */
+  /* Parent container */
+  
+  /* Question 18: Draw horizontal stripes */
+  .stripes-horizontal {
+    background: repeating-linear-gradient(
+      to bottom,
+      red,
+      red 20px,
+      white 20px,
+      white 40px
+    );
+    width: 200px;
+    height: 200px;
+  }
+  
+   .horizontal-container {
+              width: 300px;
+              height: 300px;
+              display: flex;
+              flex-direction: column;
+          }
+          .stripe-row {
+              height: 50px;
+              width: 100%;
+          }
+          .stripe-red { background-color: red; }
+          .stripe-blue { background-color: blue; }
+          .stripe-yellow { background-color: yellow; }
+          .stripe-green { background-color: green; }
+          .stripe-black { background-color: black; }
+  
+  /* Question 19: Convert to vertical stripes */
+  .vertical-container {
+              width: 300px;
+              height: 300px;
+              display: flex;
+              flex-direction: row;
+          }
+          .stripe-column {
+              width: 50px;
+              height: 100%;
+          }
+          .stripe-red { background-color: red; }
+          .stripe-blue { background-color: blue; }
+          .stripe-yellow { background-color: yellow; }
+          .stripe-green { background-color: green; }
+          .stripe-black { background-color: black; }
+  
+  /* Question 20: Replicate the provided sketch */
+  .replicate-me {
+    position: relative;
+    width: 400px;
+    height: 350px;
+    background-color: lightgray;
+    padding-top: 60px;
+  }
+  
+  /* Common styles for squares */
+  .replicate-me div {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+  }
+  
+  /* Positioning each square */
+  .red-square {
+    background-color: red;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .pink-square {
+    background-color: pink;
+    top: 100px;
+    left: 81px;
+  }
+  
+  .yellow-square {
+    background-color: yellow;
+    top: 136px;
+    left: 130px;
+  }
+  
+  .green-square {
+    background-color: green;
+    top: 60px;
+    left: 190px;
+  }
+  
+  .blue-square {
+    background-color: blue;
+    top: 100px;
+    left: 225px;
+  }
+  
+  /* Question 21: Answer */
+  /* The grey box (.replicate-me) is positioned relative, so all the squares inside (absolute elements) are positioned relative to it. */
+  /* If "position: relative;" is removed from .replicate-me, the squares will be positioned relative to the <body> instead. */
+  
+  /* Question 22: Draw the Empire State Building */
+  .empire-state {
+    position: relative;
+    width: 100px;
+    height: 300px;
+    background-color: gray;
+    margin: auto;
+  }
+  
+  /* Windows */
+  .window {
+    width: 10px;
+    height: 10px;
+    background-color: yellow;
+    position: absolute;
+    border: 1px solid black;
+  }
+
+  .top-pick{
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background-color: gray;
+    border: 1px solid black;
+    top: -21px;
+    left: 24px;
+  }
+  
+
+  .window:nth-child(5) { top: 50px; left: 40px; }
+  .window:nth-child(6) { top: 50px; left: 60px; }
+  .window:nth-child(7) { top: 20px; left: 20px; }
+  .window:nth-child(8) { top: 20px; left: 40px; }
+  .window:nth-child(9) { top: 20px; left: 60px; }
+  .window:nth-child(10) { top: 50px; left: 20px; }
+  /* Antenna */
+  .antenna {
+    position: absolute;
+    top: -30px;
+    left: 45%;
+    width: 10px;
+    height: 30px;
+    background-color: black;
+  }
