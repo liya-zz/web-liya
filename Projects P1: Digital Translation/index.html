@@ -1,320 +1,405 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Waste Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
+
     <style>
         body {
+            text-align: center;
             font-family: Arial, sans-serif;
-            max-width: 1200px;
+            background-color: #f5f5f5;
+            width: 600px;
             margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
         }
-        .week-container {
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            min-width: 600px;
+            width: 600px;
+            height: 750px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #ddd;
+            /* background: url('food-waste.jpg') center/cover no-repeat; */
+        }
+
+        .hotspot-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: 0 0;
+        }
+
+        .hotspot {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 0, 0, 0.24);
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .popup {
+            display: none;
+            position: absolute;
             background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            white-space: nowrap;
+            pointer-events: none;
         }
-        .day-entry {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-        }
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 15px 0;
-        }
-        .photo-container {
+
+        #zoom-container {
+            width: 100%;
+            height: 100%;
             position: relative;
         }
-        .photo {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+
+        #wasteChart {
+            width: 400px !important;
+            /* Ensure the canvas has a defined width */
+            height: 250px !important;
+            /* Ensure the canvas has a defined height */
         }
-        .waste-data {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-        .waste-summary {
-            background: #e3f2fd;
-            padding: 20px;
-            border-radius: 8px;
+
+        .summary {
+            background-color: #e6f2ff;
+            padding: 10px;
             margin-top: 20px;
+            border-radius: 8px;
+            text-align: left;
+            width: 70%;
+            margin: auto;
         }
-        .price-tag {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(255,255,255,0.9);
-            padding: 5px 10px;
-            border-radius: 15px;
+
+        .summary h3 {
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .summary p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+
+        .summary span {
             font-weight: bold;
         }
-        .progress-bar {
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
+
+        #summaryChart {
+            height: 200px !important;
         }
-        .progress-fill {
-            height: 100%;
-            background: #ff6b6b;
-            width: var(--progress);
+
+        @media (max-width: 767px) {
+            .popup {
+                transform: scale(1.2);
+            }
         }
-        .weekly-summary {
-            background: #2196f3;
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 40px;
-        }
+   
+
     </style>
 </head>
+
 <body>
-    <h1>Weekly Food Waste Tracking</h1>
-    
-    <div class="week-container">
-        <h2>Week of January 1-7, 2025</h2>
+
+    <h2>Food Waste Visualization</h2>
+    <p>Click on any food icon to see the waste summary. Scroll to zoom.</p>
+
+    <div class="container">
+        <div id="zoom-container"
+            style="background-image: url('./IMG_6743new.JPG');background-size: cover;background-repeat: no-repeat;position: relative;">
+
+            <div class="hotspot" style="left: 35%; bottom: 5%;" data-name="Bananas">Bananas</div>
+            <div class="hotspot" style="left: 53%; top: 40%;" data-name="Milk">Milk</div>
+            <div class="hotspot" style="right: 0%; bottom: 20%;" data-name="Bread">Bread</div>
+            <div class="hotspot" style="left: 28%; bottom: 17%;" data-name="Apples">Apples</div>
+            <div class="hotspot" style="right: 27%; bottom: 12%;" data-name="Madeleine">Madeleine</div>
+            <div class="hotspot" style="left: 53%; top: 60%;" data-name="Strawberries">Strawberries</div>
+            <div class="hotspot" style="left: 10%; top: 35%;" data-name="Vegetables">Vegetables</div>
+
+        </div>
+
+        <div class="popup" id="popup">
+            <canvas id="wasteChart" width="400" height="200"></canvas> 
+            <div class="summary" id="summary">
+
+                <p>Total Purchases: <span id="totalPurchases"></span></p>
+                <p>Total Waste: <span id="totalWaste"></span></p>
+                <p>Average Daily Waste: <span id="averageWaste"></span></p>
+                <p>Highest Waste Day: <span id="highestWasteDay"></span></p>
+                <p>Lowest Waste Day: <span id="lowestWasteDay"></span></p>
+                <p>Overall Waste Percentage: <span id="overallWastePercentage"></span></p>
+            </div>
+        </div>
+
+
+        <script>
+
+            const wasteData = {
+                "Bananas": [
+                    { day: "Day 1", purchases: "$5.00", wasteAmount: "$1.50", percentage: "30%" },
+                    { day: "Day 2", purchases: "$6.00", wasteAmount: "$1.80", percentage: "30%" },
+                    { day: "Day 3", purchases: "$4.00", wasteAmount: "$1.20", percentage: "30%" },
+                    { day: "Day 4", purchases: "$7.00", wasteAmount: "$5.10", percentage: "30%" },
+                    { day: "Day 5", purchases: "$5.50", wasteAmount: "$1.65", percentage: "30%" },
+                    { day: "Day 6", purchases: "$6.50", wasteAmount: "$5.95", percentage: "30%" },
+                    { day: "Day 7", purchases: "$4.50", wasteAmount: "$1.35", percentage: "30%" },
+                    { day: "Day 8", purchases: "$7.50", wasteAmount: "$2.25", percentage: "30%" },
+                    { day: "Day 9", purchases: "$5.20", wasteAmount: "$1.56", percentage: "30%" },
+                    { day: "Day 10", purchases: "$6.80", wasteAmount: "$3.04", percentage: "30%" }
+                ],
+                "Milk": [
+                    { day: "Day 1", purchases: "$6.00", wasteAmount: "$2.00", percentage: "33.33%" },
+                    { day: "Day 2", purchases: "$7.00", wasteAmount: "$2.10", percentage: "30%" },
+                    { day: "Day 3", purchases: "$5.00", wasteAmount: "$1.50", percentage: "30%" },
+                    { day: "Day 4", purchases: "$8.00", wasteAmount: "$2.40", percentage: "30%" },
+                    { day: "Day 5", purchases: "$6.50", wasteAmount: "$1.95", percentage: "30%" },
+                    { day: "Day 6", purchases: "$7.50", wasteAmount: "$5.25", percentage: "30%" },
+                    { day: "Day 7", purchases: "$5.50", wasteAmount: "$1.65", percentage: "30%" },
+                    { day: "Day 8", purchases: "$8.50", wasteAmount: "$2.55", percentage: "30%" },
+                    { day: "Day 9", purchases: "$6.20", wasteAmount: "$1.86", percentage: "30%" },
+                    { day: "Day 10", purchases: "$7.80", wasteAmount: "$2.34", percentage: "30%" }
+                ],
+                "Bread": [
+                    { day: "Day 1", purchases: "$8.00", wasteAmount: "$1.20", percentage: "15%" },
+                    { day: "Day 2", purchases: "$9.00", wasteAmount: "$1.35", percentage: "15%" },
+                    { day: "Day 3", purchases: "$7.00", wasteAmount: "$1.05", percentage: "15%" },
+                    { day: "Day 4", purchases: "$10.00", wasteAmount: "$1.50", percentage: "15%" },
+                    { day: "Day 5", purchases: "$8.50", wasteAmount: "$1.28", percentage: "15%" },
+                    { day: "Day 6", purchases: "$9.50", wasteAmount: "$3.43", percentage: "15%" },
+                    { day: "Day 7", purchases: "$7.50", wasteAmount: "$1.13", percentage: "15%" },
+                    { day: "Day 8", purchases: "$10.50", wasteAmount: "$1.58", percentage: "15%" },
+                    { day: "Day 9", purchases: "$8.20", wasteAmount: "$4.23", percentage: "15%" },
+                    { day: "Day 10", purchases: "$6.80", wasteAmount: "$7.47", percentage: "15%" }
+                ],
+                "Apples": [
+                    { day: "Day 1", purchases: "$8.00", wasteAmount: "$1.20", percentage: "15%" },
+                    { day: "Day 2", purchases: "$9.00", wasteAmount: "$1.35", percentage: "15%" },
+                    { day: "Day 3", purchases: "$7.00", wasteAmount: "$1.05", percentage: "15%" },
+                    { day: "Day 4", purchases: "$10.00", wasteAmount: "$1.50", percentage: "15%" },
+                    { day: "Day 5", purchases: "$8.50", wasteAmount: "$1.28", percentage: "15%" },
+                    { day: "Day 6", purchases: "$9.50", wasteAmount: "$1.43", percentage: "15%" },
+                    { day: "Day 7", purchases: "$7.50", wasteAmount: "$1.13", percentage: "15%" },
+                    { day: "Day 8", purchases: "$10.50", wasteAmount: "$1.58", percentage: "15%" },
+                    { day: "Day 9", purchases: "$8.20", wasteAmount: "$7.23", percentage: "15%" },
+                    { day: "Day 10", purchases: "$3.80", wasteAmount: "$1.7", percentage: "15%" }
+                ],
+                "Madeleine": [
+                    { day: "Day 1", purchases: "$8.00", wasteAmount: "$4.20", percentage: "15%" },
+                    { day: "Day 2", purchases: "$9.00", wasteAmount: "$1.35", percentage: "15%" },
+                    { day: "Day 3", purchases: "$7.00", wasteAmount: "$1.05", percentage: "15%" },
+                    { day: "Day 4", purchases: "$10.00", wasteAmount: "$1.50", percentage: "15%" },
+                    { day: "Day 5", purchases: "$8.50", wasteAmount: "$1.28", percentage: "15%" },
+                    { day: "Day 6", purchases: "$9.50", wasteAmount: "$1.43", percentage: "15%" },
+                    { day: "Day 7", purchases: "$7.50", wasteAmount: "$1.13", percentage: "15%" },
+                    { day: "Day 8", purchases: "$10.50", wasteAmount: "$1.58", percentage: "15%" },
+                    { day: "Day 9", purchases: "$8.20", wasteAmount: "$1.23", percentage: "15%" },
+                    { day: "Day 10", purchases: "$9.80", wasteAmount: "$1.7", percentage: "15%" }
+                ],
+                "Strawberries": [
+                    { day: "Day 1", purchases: "$8.00", wasteAmount: "$1.20", percentage: "15%" },
+                    { day: "Day 2", purchases: "$9.00", wasteAmount: "$1.35", percentage: "15%" },
+                    { day: "Day 3", purchases: "$7.00", wasteAmount: "$1.05", percentage: "15%" },
+                    { day: "Day 4", purchases: "$10.00", wasteAmount: "$1.50", percentage: "15%" },
+                    { day: "Day 5", purchases: "$8.50", wasteAmount: "$1.28", percentage: "15%" },
+                    { day: "Day 6", purchases: "$9.50", wasteAmount: "$6.43", percentage: "15%" },
+                    { day: "Day 7", purchases: "$7.50", wasteAmount: "$1.13", percentage: "15%" },
+                    { day: "Day 8", purchases: "$10.50", wasteAmount: "$1.58", percentage: "15%" },
+                    { day: "Day 9", purchases: "$8.20", wasteAmount: "$1.23", percentage: "15%" },
+                    { day: "Day 10", purchases: "$9.80", wasteAmount: "$1.47", percentage: "15%" }
+                ],
+                "Vegetables": [
+                    { day: "Day 1", purchases: "$8.00", wasteAmount: "$1.20", percentage: "15%" },
+                    { day: "Day 2", purchases: "$9.00", wasteAmount: "$1.35", percentage: "15%" },
+                    { day: "Day 3", purchases: "$7.00", wasteAmount: "$1.05", percentage: "15%" },
+                    { day: "Day 4", purchases: "$10.00", wasteAmount: "$1.50", percentage: "15%" },
+                    { day: "Day 5", purchases: "$8.50", wasteAmount: "$3.28", percentage: "15%" },
+                    { day: "Day 6", purchases: "$9.50", wasteAmount: "$1.43", percentage: "15%" },
+                    { day: "Day 7", purchases: "$7.50", wasteAmount: "$1.13", percentage: "15%" },
+                    { day: "Day 8", purchases: "$10.50", wasteAmount: "$5.58", percentage: "15%" },
+                    { day: "Day 9", purchases: "$8.20", wasteAmount: "$1.23", percentage: "15%" },
+                    { day: "Day 10", purchases: "$9.80", wasteAmount: "$1.47", percentage: "15%" }
+                ]
+            };
+
+
+            let chartInstance = null; // Declare chartInstance
+
+            const container = document.getElementById('zoom-container');
+            const popup = document.getElementById('popup');
+
+
+
+            let summaryChartInstance = null;
+
+            const panzoomInstance = Panzoom(container, {
+                maxScale: 5,
+                minScale: 1,
+                contain: 'outside'
+            });
+
+            container.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+
+            function updateSummary(itemName) {
+                const wasteForItem = wasteData[itemName];
+                if (!wasteForItem) return;
+
+                const totalPurchases = wasteForItem.reduce((sum, entry) => sum + parseFloat(entry.purchases.replace("$", "")), 0);
+                const totalWaste = wasteForItem.reduce((sum, entry) => sum + parseFloat(entry.wasteAmount.replace("$", "")), 0);
+                const averageWaste = totalWaste / wasteForItem.length;
+                const highestWasteDay = wasteForItem.reduce((max, entry) => parseFloat(entry.wasteAmount.replace("$", "")) > max.amount ? { day: entry.day, amount: parseFloat(entry.wasteAmount.replace("$", "")) } : max, { day: "", amount: 0 });
+                const lowestWasteDay = wasteForItem.reduce((min, entry) => parseFloat(entry.wasteAmount.replace("$", "")) < min.amount ? { day: entry.day, amount: parseFloat(entry.wasteAmount.replace("$", "")) } : min, { day: "", amount: Infinity });
+                const overallWastePercentage = (totalWaste / totalPurchases) * 100;
+
+                document.getElementById('totalPurchases').textContent = `$${totalPurchases.toFixed(2)}`;
+                document.getElementById('totalWaste').textContent = `$${totalWaste.toFixed(2)}`;
+                document.getElementById('averageWaste').textContent = `$${averageWaste.toFixed(2)}`;
+                document.getElementById('highestWasteDay').textContent = `${highestWasteDay.day} ($${highestWasteDay.amount.toFixed(2)})`;
+                document.getElementById('lowestWasteDay').textContent = `${lowestWasteDay.day} ($${lowestWasteDay.amount.toFixed(2)})`;
+                document.getElementById('overallWastePercentage').textContent = `${overallWastePercentage.toFixed(1)}%`;
+            }
+
+  
+            document.querySelectorAll('.hotspot').forEach(hotspot => {
+    hotspot.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event from propagating
+        const itemName = e.target.getAttribute('data-name');
+        console.log(`Clicked on: ${itemName}`); // Debugging log
+        if (wasteData[itemName]) {
+            const rect = hotspot.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+
+            // Get the current scale from the Panzoom instance
+            const transform = window.getComputedStyle(container).transform;
+            const matrix = new DOMMatrix(transform);
+            const scaleX = matrix.a;
+            const scaleY = matrix.d;
+
+            // Temporarily display the popup to measure its dimensions
+            popup.style.display = 'block';
+            const popupWidth = popup.offsetWidth;
+            const popupHeight = popup.offsetHeight;
+
+            let popupLeft, popupTop;
+
+            // Check if the item is Bread or Bananas
+            if (itemName === "Bread" || itemName === "Bananas") {
+        // Center the popup in the zoom-container, adjusted for scale
+        popupLeft = (containerRect.width / 2 - popupWidth / 2) / scaleX;
+        popupTop = (containerRect.height / 2 - popupHeight / 2) / scaleY;
         
-        <!-- Monday -->
-        <div class="day-entry">
-            <h3>Monday - Initial Purchase</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Monday Grocery Purchase" class="photo">
-                    <span class="price-tag">$85.50</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Purchased Items:</h4>
-                <ul>
-                    <li>Fresh Vegetables & Fruits - $25.50</li>
-                    <li>Dairy Products - $15.00</li>
-                    <li>Bread and Grains - $12.00</li>
-                    <li>Proteins - $23.00</li>
-                    <li>Snacks - $10.00</li>
-                </ul>
-            </div>
-        </div>
-        <div class="day-entry">
-            <h3>Monday - Dinner Waste</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Monday Dinner Waste" class="photo">
-                    <span class="price-tag">$4.50</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Wasted Items:</h4>
-                <ul>
-                    <li>Leftover salad - $2.50</li>
-                    <li>Unused bread - $2.00</li>
-                </ul>
-            </div>
-            <div class="waste-summary">
-                <h3>Monday Summary</h3>
-                <p>Total Purchased: $85.50</p>
-                <p>Total Wasted: $4.50</p>
-                <p>Waste Percentage: 5.3%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="--progress: 5.3%"></div>
-                </div>
-            </div>
-        </div>
+        // Move the popup more to the left
+        popupLeft -= 50; // Adjust this value as needed
+    } else {
+        // Calculate popup position relative to the container, adjusted for scale
+        popupLeft = (rect.left - containerRect.left + rect.width / 2) / scaleX - popupWidth / 2;
+        popupTop = (rect.top - containerRect.top + rect.height / 2) / scaleY - popupHeight / 2;
+    }
 
-        <!-- Tuesday -->
-        <div class="day-entry">
-            <h3>Tuesday - Dinner Waste</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Tuesday Dinner Waste" class="photo">
-                    <span class="price-tag">$3.75</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Wasted Items:</h4>
-                <ul>
-                    <li>Expired yogurt - $2.25</li>
-                    <li>Bruised fruit - $1.50</li>
-                </ul>
-            </div>
-            <div class="waste-summary">
-                <h3>Tuesday Summary</h3>
-                <p>Total Wasted: $3.75</p>
-                <p>Waste Percentage: 4.4%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="--progress: 4.4%"></div>
-                </div>
-            </div>
-        </div>
+            // Ensure the popup doesn't go outside the container
+            if (popupLeft + popupWidth > containerRect.width) {
+                popupLeft = containerRect.width - popupWidth;
+            }
+            if (popupTop + popupHeight > containerRect.height) {
+                popupTop = containerRect.height - popupHeight;
+            }
+            if (popupLeft < 0) {
+                popupLeft = 0;
+            }
+            if (popupTop < 0) {
+                popupTop = 0;
+            }
 
-        <!-- Wednesday -->
-        <div class="day-entry">
-            <h3>Wednesday - Dinner Waste</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Wednesday Dinner Waste" class="photo">
-                    <span class="price-tag">$6.25</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Wasted Items:</h4>
-                <ul>
-                    <li>Leftover chicken - $4.25</li>
-                    <li>Wilted vegetables - $2.00</li>
-                </ul>
-            </div>
-            <div class="waste-summary">
-                <h3>Wednesday Summary</h3>
-                <p>Total Wasted: $6.25</p>
-                <p>Waste Percentage: 7.3%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="--progress: 7.3%"></div>
-                </div>
-            </div>
-        </div>
+            popup.style.left = `${popupLeft}px`;
+            popup.style.top = `${popupTop}px`;
 
-        <!-- Thursday -->
-        <div class="day-entry">
-            <h3>Thursday - Dinner Waste</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Thursday Dinner Waste" class="photo">
-                    <span class="price-tag">$2.90</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Wasted Items:</h4>
-                <ul>
-                    <li>Leftover rice - $1.40</li>
-                    <li>Stale bread - $1.50</li>
-                </ul>
-            </div>
-            <div class="waste-summary">
-                <h3>Thursday Summary</h3>
-                <p>Total Wasted: $2.90</p>
-                <p>Waste Percentage: 3.4%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="--progress: 3.4%"></div>
-                </div>
-            </div>
-        </div>
+            // Display the chart and update summary
+            displayWasteData(itemName);
+            updateSummary(itemName);
+        }
+    });
+});
 
-        <!-- Friday -->
-        <div class="day-entry">
-            <h3>Friday - Additional Purchase</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Friday Grocery Purchase" class="photo">
-                    <span class="price-tag">$35.25</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Purchased Items:</h4>
-                <ul>
-                    <li>Weekend Groceries - $35.25</li>
-                </ul>
-            </div>
-        </div>
-        <div class="day-entry">
-            <h3>Friday - Dinner Waste</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Friday Dinner Waste" class="photo">
-                    <span class="price-tag">$5.20</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Wasted Items:</h4>
-                <ul>
-                    <li>Unused fish - $3.20</li>
-                    <li>Leftover sides - $2.00</li>
-                </ul>
-            </div>
-            <div class="waste-summary">
-                <h3>Friday Summary</h3>
-                <p>Additional Purchased: $35.25</p>
-                <p>Total Wasted: $5.20</p>
-                <p>Waste Percentage: 4.3%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="--progress: 4.3%"></div>
-                </div>
-            </div>
-        </div>
+            // Close the popup when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.hotspot') && !popup.contains(e.target)) {
+                    popup.style.display = "none";
+                }
+            });
 
-        <!-- Saturday -->
-        <div class="day-entry">
-            <h3>Saturday - Dinner Waste</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Saturday Dinner Waste" class="photo">
-                    <span class="price-tag">$7.80</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Wasted Items:</h4>
-                <ul>
-                    <li>Uneaten takeout - $5.30</li>
-                    <li>Expired snacks - $2.50</li>
-                </ul>
-            </div>
-            <div class="waste-summary">
-                <h3>Saturday Summary</h3>
-                <p>Total Wasted: $7.80</p>
-                <p>Waste Percentage: 6.5%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="--progress: 6.5%"></div>
-                </div>
-            </div>
-        </div>
+            function displayWasteData(itemName) {
+                if (chartInstance) {
+                    chartInstance.destroy();
+                }
 
-        <!-- Sunday -->
-        <div class="day-entry">
-            <h3>Sunday - Dinner Waste</h3>
-            <div class="photo-grid">
-                <div class="photo-container">
-                    <img src="/api/placeholder/400/320" alt="Sunday Dinner Waste" class="photo">
-                    <span class="price-tag">$4.20</span>
-                </div>
-            </div>
-            <div class="waste-data">
-                <h4>Wasted Items:</h4>
-                <ul>
-                    <li>Weekend leftovers - $3.20</li>
-                    <li>Spoiled produce - $1.00</li>
-                </ul>
-            </div>
-            <div class="waste-summary">
-                <h3>Sunday Summary</h3>
-                <p>Total Wasted: $4.20</p>
-                <p>Waste Percentage: 3.5%</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="--progress: 3.5%"></div>
-                </div>
-            </div>
-        </div>
+                const wasteForItem = wasteData[itemName];
+                if (!wasteForItem) {
+                    console.log(`No data found for: ${itemName}`); // Debugging log
+                    return;
+                }
 
-        <!-- Weekly Summary -->
-        <div class="weekly-summary">
-            <h2>Weekly Overview</h2>
-            <p>Total Purchases: $120.75</p>
-            <p>Total Waste: $34.60</p>
-            <p>Average Daily Waste: $4.94</p>
-            <p>Highest Waste Day: Saturday ($7.80)</p>
-            <p>Lowest Waste Day: Thursday ($2.90)</p>
-            <p>Overall Waste Percentage: 28.7%</p>
-            <div class="progress-bar">
-                <div class="progress-fill" style="--progress: 28.7%"></div>
-            </div>
-        </div>
-    </div>
+                const labels = wasteForItem.map(entry => entry.day);
+                const wasteAmounts = wasteForItem.map(entry => parseFloat(entry.wasteAmount.replace("$", "")));
+                const purchaseAmounts = wasteForItem.map(entry => parseFloat(entry.purchases.replace("$", "")));
+
+                console.log(`Data for ${itemName}:`, labels, wasteAmounts, purchaseAmounts); // Debugging log
+
+                const ctx = document.getElementById("wasteChart").getContext("2d");
+                chartInstance = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: `${itemName} Waste Amount`,
+                                data: wasteAmounts,
+                                borderColor: "red",
+                                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                                borderWidth: 2
+                            },
+                            {
+                                label: `${itemName} Purchases`,
+                                data: purchaseAmounts,
+                                borderColor: "blue",
+                                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+
+
+        </script>
 </body>
+
 </html>
