@@ -1,0 +1,192 @@
+{
+    "eras": [
+        {
+            "title": "1990s: Basic Text-Based Logins",
+            "description": "The early era of computing focused on simple, system-level authentication",
+            "period": "1990s",
+            "items": [
+                {
+                    "title": "Windows 95 Login",
+                    "year": 1995,
+                    "authType": "Text-Based Login",
+                    "platform": "Windows OS",
+                    "features": "Simple username and password input, system-focused, no network connectivity required",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/Windows_95_stacked_logo.svg"
+                },
+                {
+                    "title": "Mac OS Classic Login",
+                    "year": 1997,
+                    "authType": "Text-Based Login",
+                    "platform": "Mac OS",
+                    "features": "Basic password prompt without user profiles, minimal interface",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw8FD8y5MPDrYZFeEIXMxI4eiyU_GODMPGEQ&s"
+                },
+                {
+                    "title": "Unix/Linux Terminal Login",
+                    "year": 1995,
+                    "authType": "Text-Based Login",
+                    "platform": "Unix/Linux",
+                    "features": "Command-line based authentication, requiring manual input, highly secure",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg"
+                },
+                {
+                    "title": "AOL Login",
+                    "year": 1996,
+                    "authType": "Dial-up Auth",
+                    "platform": "Desktop",
+                    "features": "Dial-up authentication with basic form, screen name-based login",
+                    "image": "https://s.yimg.com/ny/api/res/1.2/5aplMHu3xZxf3AXpgxRINQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTQwMDtoPTMwMA--/https://media.zenfs.com/en-US/homerun/techmedianetwork.tomguide.com/3ab3b1e17daf8be6bbf218e9abfd5dab"
+                }
+            ]
+        },
+        {
+            "title": "2000s: Web-Based & Branded Login Screens",
+            "description": "The rise of internet services brought branded, web-based authentication",
+            "period": "2000s",
+            "items": [
+                {
+                    "title": "Yahoo Mail Login",
+                    "year": 2005,
+                    "authType": "Web Password Auth",
+                    "platform": "Web",
+                    "features": "Email input with simple password field, remember me option",
+                    "image": "https://s.yimg.com/nq/nr/img/desktop_notification_icon_3x_hyeOa8eLuUarSAZ1BW1p6y52zCsA520yKCg6fgaOCXQ_v1.png"
+                },
+                {
+                    "title": "Hotmail Login",
+                    "year": 2003,
+                    "authType": "Web Password Auth",
+                    "platform": "Web",
+                    "features": "Early web email login UI, security question recovery",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhnlO9q-6YMr9XvvYo9OonCQmSpzBZEJfqjg&s"
+                },
+                {
+                    "title": "Facebook Login",
+                    "year": 2008,
+                    "authType": "Web Password Auth",
+                    "platform": "Web",
+                    "features": "Clean centered login, Remember Me checkbox, social recovery options",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/800px-Facebook_logo_%28square%29.png"
+                },
+                {
+                    "title": "Windows XP Login",
+                    "year": 2001,
+                    "authType": "Local Username/Password",
+                    "platform": "Windows OS",
+                    "features": "User-friendly UI with profile images, fast user switching",
+                    "image": "https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/03/windows-xp-login-screen-admin.jpg"
+                },
+                {
+                    "title": "Mac OS X Aqua Login",
+                    "year": 2001,
+                    "authType": "Local Username/Password",
+                    "platform": "Mac OS",
+                    "features": "Graphical login screen with transparency effects, user avatars",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0PtEIJTM6vw8UXkdaog27aS8QHYrMSP5a8w&s"
+                }
+            ]
+        },
+        {
+            "title": "2010s: Modern Web & Mobile Authentication",
+            "description": "The mobile revolution transformed login experiences with sophisticated security",
+            "period": "2010s",
+            "items": [
+                {
+                    "title": "Google Account Login",
+                    "year": 2012,
+                    "authType": "Multi-factor Auth",
+                    "platform": "Web",
+                    "features": "Standardized web login, OAuth integration, 2FA support",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                },
+                {
+                    "title": "Twitter Login",
+                    "year": 2012,
+                    "authType": "Federated Auth",
+                    "platform": "Web & Mobile",
+                    "features": "Social login options, OAuth provider support, 2FA capabilities",
+                    "image": "https://about.twitter.com/content/dam/about-twitter/x/brand-toolkit/logo-black.png.twimg.1920.png"
+                },
+                {
+                    "title": "Instagram Login",
+                    "year": 2015,
+                    "authType": "Mobile Auth",
+                    "platform": "Mobile",
+                    "features": "Mobile-first design, strong visual identity, social integration",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
+                },
+                {
+                    "title": "LinkedIn Login",
+                    "year": 2013,
+                    "authType": "Enterprise Auth",
+                    "platform": "Web",
+                    "features": "Enterprise-focused security, OAuth integration, professional network",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                },
+                {
+                    "title": "Windows 10 Login",
+                    "year": 2015,
+                    "authType": "Multi-factor Auth",
+                    "platform": "Windows OS",
+                    "features": "PIN and picture password options, biometric support",
+                    "image": "data:image/jpeg;base64,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"
+                },
+                {
+                    "title": "Apple ID Login",
+                    "year": 2013,
+                    "authType": "Multi-factor Auth",
+                    "platform": "Cross-platform",
+                    "features": "Two-factor authentication, device trust, unified login across Apple ecosystem",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                }
+            ]
+        },
+        {
+            "title": "Modern (2020s & Beyond): Biometric & Passwordless Logins",
+            "description": "The latest era focuses on seamless, passwordless authentication methods",
+            "period": "2020s",
+            "items": [
+                {
+                    "title": "Face ID",
+                    "year": 2017,
+                    "authType": "Biometric Auth",
+                    "platform": "Mobile",
+                    "features": "Facial recognition, secure enclave, machine learning adaptation",
+                    "image": "https://static.dezeen.com/uploads/2017/09/iphone-x-apple-news_dezeen_2364_col_2-1704x1349.jpg"
+                },
+                {
+                    "title": "Google Smart Lock",
+                    "year": 2020,
+                    "authType": "Passwordless Auth",
+                    "platform": "Cross-platform",
+                    "features": "Trusted device authentication, automatic sign-in, security key support",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk59EkWGEVOZORU5H4RB7vO4uqT68z_TLbtQ&s"
+                },
+                {
+                    "title": "Windows Hello",
+                    "year": 2021,
+                    "authType": "Biometric Auth",
+                    "platform": "Windows OS",
+                    "features": "Face and fingerprint authentication, PIN backup, enterprise support",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8u27Ws4JLSwagCZYjc1DygwjKFbzcjdw0hg&s"
+                },
+                {
+                    "title": "Okta SSO",
+                    "year": 2022,
+                    "authType": "Enterprise SSO",
+                    "platform": "Enterprise",
+                    "features": "Single sign-on, enterprise identity management, multi-factor authentication",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAtKskcNGG7JBzR-PNXUtO-orsm_LXnSHPeg&s"
+                },
+                {
+                    "title": "Magic Link Login",
+                    "year": 2023,
+                    "authType": "Passwordless Auth",
+                    "platform": "Web",
+                    "features": "Email-based passwordless authentication, time-limited tokens, used by Slack and Notion",
+                    "image": "https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg"
+                }
+            ]
+        }
+    ]
+}
