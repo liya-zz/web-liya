@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourseRoll - Educational Platform</title>
+    <link rel="stylesheet" href="/CSS/nav.css">
+    <link rel="stylesheet" href="../CSS/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="./about.html" class="nav-link">About</a>
+        </div>
+        <div class="nav-logo"><a href="/">Liya</a></div>
+        <div class="nav-right">
+            <div class="nav-links-side-bar">
+                <a href="../index.html" class="nav-link">Home</a>
+                <br>
+                <a href="./about.html" class="nav-link">About</a>
+            </div>
+            <div class="resume-btn-container">
+                <a href="#" class="resume-btn">Resume</a>
+            </div>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>CourseRoll</h1>
+                <p class="subtitle">A platform for creating and sharing interactive course materials</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Role</h4>
+                        <p>UX/UI Designer</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Timeline</h4>
+                        <p>4 months</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Tools</h4>
+                        <p>Figma, Adobe XD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/images/Work 2.png" alt="CourseRoll Platform Screenshot">
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="section overview">
+        <div class="container">
+            <h2 class="section-title">Overview</h2>
+            <div class="content-block">
+                <h3>The Problem</h3>
+                <p>Educators struggle to create engaging, interactive course materials that work across different
+                    devices and platforms. Students often find traditional digital course materials static and
+                    uninspiring, leading to decreased engagement.</p>
+            </div>
+            <div class="content-block">
+                <h3>The Solution</h3>
+                <p>CourseRoll is a web-based platform that enables educators to easily create interactive course
+                    materials with embedded quizzes, videos, and collaborative elements, while providing students with a
+                    seamless learning experience across devices.</p>
+            </div>
+            <div class="content-block">
+                <h3>Project Goals</h3>
+                <ul class="goals-list">
+                    <li>Simplify the creation of interactive course content</li>
+                    <li>Increase student engagement with course materials</li>
+                    <li>Support multiple content types (text, video, quizzes)</li>
+                    <li>Ensure accessibility across devices</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="process" class="section process">
+        <div class="container">
+            <h2 class="section-title">Design Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Research</h3>
+                    <p>Educator interviews<br>Student surveys<br>Competitive analysis</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Ideation</h3>
+                    <p>User flows<br>Information architecture<br>Wireframing</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Design</h3>
+                    <p>UI design<br>Interactive prototypes<br>Usability testing</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Refine</h3>
+                    <p>Iterate based on feedback<br>Accessibility review<br>Final design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section research">
+        <div class="container">
+            <h2 class="section-title">User Research</h2>
+            <div class="content-block">
+                <h3>Understanding the Problem</h3>
+                <p>I conducted interviews with 15 educators and surveyed 50 students to understand pain points in
+                    digital course material creation and consumption:</p>
+                <ul class="findings-list">
+                    <li>87% of educators spent excessive time formatting materials for different platforms</li>
+                    <li>73% of students reported difficulty staying engaged with static PDFs or slides</li>
+                    <li>65% of educators wanted to include interactive elements but lacked technical skills</li>
+                    <li>92% of students preferred materials with embedded questions and progress tracking</li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3>Competitive Analysis</h3>
+                <p>Analysis of existing educational platforms revealed key opportunities:</p>
+                <div class="competitive-analysis">
+                    <div class="competitor">
+                        <h4>Google Classroom</h4>
+                        <p>Excellent for assignment distribution but limited content creation tools</p>
+                    </div>
+                    <div class="competitor">
+                        <h4>Moodle</h4>
+                        <p>Powerful but complex interface discourages many educators</p>
+                    </div>
+                    <div class="competitor">
+                        <h4>Nearpod</h4>
+                        <p>Great interactivity but focused on live sessions rather than asynchronous learning</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>User Personas</h3>
+                <div class="personas">
+                    <div class="persona">
+                        <h4>The Busy Professor</h4>
+                        <p>"I want to create engaging materials without spending hours learning new software."</p>
+                        <ul>
+                            <li>Needs intuitive, time-saving tools</li>
+                            <li>Wants to repurpose existing content</li>
+                            <li>Values student engagement metrics</li>
+                        </ul>
+                    </div>
+                    <div class="persona">
+                        <h4>The Digital Native Student</h4>
+                        <p>"I learn better when I can interact with the material, not just read it."</p>
+                        <ul>
+                            <li>Expects mobile-friendly content</li>
+                            <li>Prefers bite-sized, interactive elements</li>
+                            <li>Wants progress tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="design" class="section design">
+        <div class="container">
+            <h2 class="section-title">Design & Iteration</h2>
+            <div class="content-block">
+                <h3>Initial Sketches</h3>
+                <p>Early explorations focused on the content creation workflow and student viewing experience.</p>
+                <div class="design-images">
+                    <img src="/images/Course roll pic 7.png" alt="Initial sketches">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Key Features</h3>
+                <div class="features-grid">
+                    <div class="feature">
+                        <h4>Drag-and-Drop Editor</h4>
+                        <p>Intuitive interface for building courses with multimedia elements</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Interactive Elements</h4>
+                        <p>Embedded quizzes, discussions, and annotations</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Responsive Design</h4>
+                        <p>Automatically adapts content for optimal viewing on any device</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Progress Tracking</h4>
+                        <p>Students and instructors can monitor engagement and completion</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Usability Testing</h3>
+                <p>Testing with 8 educators and 12 students revealed important insights:</p>
+                <ul class="testing-findings">
+                    <li>Educators needed clearer visual cues for the content creation process</li>
+                    <li>Students wanted more prominent progress indicators</li>
+                    <li>Both groups requested better navigation between course sections</li>
+                </ul>
+                <div class="design-images">
+                    <img src="/images/Course roll pic 2 (1).png" alt="Design iterations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="section solution">
+        <div class="container">
+            <h2 class="section-title">Final Solution</h2>
+            <div class="content-block">
+                <h3>Content Creation</h3>
+                <p>The intuitive editor allows educators to build courses by dragging and dropping elements, with
+                    real-time previews.</p>
+                <div class="solution-images">
+                    <img src="/images/Course roll pic 7.png" alt="Content editor interface">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Course Dashboard</h3>
+                <p>Educators can organize materials into modules and track student progress at a glance.</p>
+                <div class="solution-images">
+                    <img src="/images/Work 2.png" alt="Course dashboard">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Student View</h3>
+                <p>Students experience content in a clean, distraction-free interface with interactive elements.</p>
+                <div class="solution-images">
+                    <img src="/images/Course roll pic 2 (1).png" alt="Student view">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Mobile Experience</h3>
+                <p>The responsive design ensures optimal viewing on phones and tablets.</p>
+                <div class="solution-images">
+                    <img src="/images/Course roll pic 6.png" alt="Mobile experience">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflection" class="section reflection">
+        <div class="container">
+            <h2 class="section-title">Reflection</h2>
+            <div class="content-block">
+                <h3>What I Learned</h3>
+                <p>This project reinforced the importance of designing for two distinct user groups (educators and
+                    students) with very different needs and technical abilities. Creating a system that was powerful
+                    enough for content creators while remaining simple and intuitive for consumers was a challenging but
+                    rewarding balance to achieve.</p>
+                <p>I also gained valuable experience in designing for accessibility across devices, ensuring the
+                    platform worked equally well on desktop computers in classrooms and mobile devices used by students
+                    on the go.</p>
+            </div>
+            <div class="content-block">
+                <h3>Next Steps</h3>
+                <ul class="next-steps">
+                    <li>Expand library of interactive content templates</li>
+                    <li>Develop advanced analytics for educators</li>
+                    <li>Implement collaborative annotation features</li>
+                    <li>Explore integration with learning management systems</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Liya Zhang &copy; Course Roll Case Study. All content and images are my own.</p>
+        </div>
+    </footer>
+
+</body>
+
+<script src="../js/nav.js"></script>
+</html>

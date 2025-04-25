@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoTogether - Group Travel Planner</title>
+    <link rel="stylesheet" href="/CSS/nav.css">
+    <link rel="stylesheet" href="../CSS/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="./about.html" class="nav-link">About</a>
+        </div>
+        <div class="nav-logo"><a href="/">Liya</a></div>
+        <div class="nav-right">
+            <div class="nav-links-side-bar">
+                <a href="../index.html" class="nav-link">Home</a>
+                <br>
+                <a href="./about.html" class="nav-link">About</a>
+            </div>
+            <div class="resume-btn-container">
+                <a href="#" class="resume-btn">Resume</a>
+            </div>
+
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>GoTogether</h1>
+                <p class="subtitle">A mobile application for group travel planning</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <h4>Role</h4>
+                        <p>Product Designer</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Timeline</h4>
+                        <p>3 months</p>
+                    </div>
+                    <div class="meta-item">
+                        <h4>Tools</h4>
+                        <p>Figma, Illustrator</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/images/Gotogether Pic 7.png" alt="GoTogether App Screenshot">
+            </div>
+        </div>
+    </section>
+
+    <section id="overview" class="section overview">
+        <div class="container">
+            <h2 class="section-title">Overview</h2>
+            <div class="content-block">
+                <h3>The Problem</h3>
+                <p>Planning group trips is stressful and inefficient. Travelers struggle to coordinate itineraries,
+                    split expenses, and communicate with their group, often relying on multiple apps that don't
+                    integrate with each other.</p>
+            </div>
+            <div class="content-block">
+                <h3>The Solution</h3>
+                <p>GoTogether is a mobile application that simplifies group travel planning by providing collaborative
+                    tools for itinerary creation, expense splitting, and real-time coordination—all in one place.</p>
+            </div>
+            <div class="content-block">
+                <h3>Project Goals</h3>
+                <ul class="goals-list">
+                    <li>Reduce the stress of planning group trips</li>
+                    <li>Minimize miscommunication between travelers</li>
+                    <li>Create a centralized platform for all travel planning needs</li>
+                    <li>Make expense tracking and splitting effortless</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section process">
+        <div class="container">
+            <h2 class="section-title">Design Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Research</h3>
+                    <p>User interviews<br>Competitive analysis<br>Personas</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Ideation</h3>
+                    <p>Brainstorming<br>User flows<br>Wireframing</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Design</h3>
+                    <p>UI design<br>Prototyping<br>Usability testing</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Refine</h3>
+                    <p>Iterate<br>User feedback<br>Final design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section research">
+        <div class="container">
+            <h2 class="section-title">User Research</h2>
+            <div class="content-block">
+                <h3>Understanding the Problem</h3>
+                <p>I conducted interviews with 12 frequent group travelers to understand their pain points when planning
+                    trips with others. Here's what I learned:</p>
+                <ul class="findings-list">
+                    <li>100% of participants used 3+ apps to plan their last group trip</li>
+                    <li>83% reported frustration with splitting expenses</li>
+                    <li>75% had conflicts due to miscommunication about plans</li>
+                    <li>67% found itinerary coordination to be the most stressful part</li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3>Competitive Analysis</h3>
+                <p>I analyzed existing travel apps to identify gaps in the market:</p>
+                <div class="competitive-analysis">
+                    <div class="competitor">
+                        <h4>TripIt</h4>
+                        <p>Good for individual itineraries but lacks group collaboration features</p>
+                    </div>
+                    <div class="competitor">
+                        <h4>Splitwise</h4>
+                        <p>Excellent for expense splitting but no travel-specific features</p>
+                    </div>
+                    <div class="competitor">
+                        <h4>Google Trips</h4>
+                        <p>Discontinued service that didn't focus on group travel</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>User Personas</h3>
+                <div class="personas">
+                    <div class="persona">
+                        <h4>The Planner</h4>
+                        <p>"I always end up organizing everything. I wish my friends could help more without me having
+                            to chase them."</p>
+                        <ul>
+                            <li>Wants collaborative tools</li>
+                            <li>Needs to delegate tasks</li>
+                            <li>Frustrated with last-minute changes</li>
+                        </ul>
+                    </div>
+                    <div class="persona">
+                        <h4>The Free Spirit</h4>
+                        <p>"I just want to show up and have fun. All this planning stresses me out."</p>
+                        <ul>
+                            <li>Prefers minimal planning</li>
+                            <li>Wants easy access to info</li>
+                            <li>Forgets to pay people back</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="design" class="section design">
+        <div class="container">
+            <h2 class="section-title">Design & Iteration</h2>
+            <div class="content-block">
+                <h3>Initial Sketches</h3>
+                <p>I began by sketching low-fidelity wireframes to explore different layouts and user flows.</p>
+                <div class="design-images">
+                    <img src="/images/Gotogether Pic 10.png" alt="Initial sketches">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Key Features</h3>
+                <div class="features-grid">
+                    <div class="feature">
+                        <h4>Shared Itinerary</h4>
+                        <p>Collaboratively build your trip schedule with all group members</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Expense Splitting</h4>
+                        <p>Track shared expenses and automatically calculate who owes what</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Group Chat</h4>
+                        <p>Communicate with your travel group without switching apps</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Location Sharing</h4>
+                        <p>See where your group members are when exploring separately</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Usability Testing</h3>
+                <p>I conducted usability tests with 5 participants to identify pain points in the prototype:</p>
+                <ul class="testing-findings">
+                    <li>Users wanted clearer visual hierarchy in the itinerary view</li>
+                    <li>The expense splitting flow needed simplification</li>
+                    <li>Some icons weren't immediately intuitive</li>
+                </ul>
+                <div class="design-images">
+                    <img src="/images/Gotogether Pic 14.png" alt="Design iterations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="section solution">
+        <div class="container">
+            <h2 class="section-title">Final Solution</h2>
+            <div class="content-block">
+                <h3>Onboarding</h3>
+                <p>A simple onboarding process helps users quickly create or join a trip.</p>
+                <div class="solution-images">
+                    <img src="/images/Gotogether Pic 9.png" alt="Onboarding screens">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Trip Dashboard</h3>
+                <p>The central hub shows all trip information at a glance with easy navigation to key features.</p>
+                <div class="solution-images">
+                    <img src="/images/Gotogether Pic 7.png" alt="Dashboard screen">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Itinerary</h3>
+                <p>The collaborative itinerary allows group members to add and edit activities with real-time updates.
+                </p>
+                <div class="solution-images">
+                    <img src="/images/Gotogether Pic 5.png" alt="Itinerary screen">
+                </div>
+            </div>
+            <div class="content-block">
+                <h3>Expenses</h3>
+                <p>Users can easily add expenses and the app automatically calculates balances.</p>
+                <div class="solution-images">
+                    <img src="/images/Gotogether Pic 15.png" alt="Expenses screen">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflection" class="section reflection">
+        <div class="container">
+            <h2 class="section-title">Reflection</h2>
+            <div class="content-block">
+                <h3>What I Learned</h3>
+                <p>This project taught me the importance of thorough user research in identifying real pain points. What
+                    initially seemed like a simple coordination problem actually involved deeper issues around social
+                    dynamics and financial transparency in group settings.</p>
+                <p>I also learned to value early and frequent usability testing. Some of my initial assumptions about
+                    user behavior were proven wrong during testing, leading to valuable iterations.</p>
+            </div>
+            <div class="content-block">
+                <h3>Next Steps</h3>
+                <ul class="next-steps">
+                    <li>Conduct additional testing with larger groups (5+ people)</li>
+                    <li>Explore integration with popular booking services</li>
+                    <li>Develop a web version for easier pre-trip planning</li>
+                    <li>Add more customization options for itinerary views</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Liya Zhang &copy; GoTogether Case Study. All content and images are my own.</p>
+        </div>
+    </footer>
+
+</body>
+<script src="../js/nav.js"></script>
+</html>

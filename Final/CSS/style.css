@@ -1,0 +1,644 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #2c3e50;
+  --text-color: #333;
+  --light-bg: #f9f9f9;
+  --dark-bg: #2c3e50;
+  --white: #ffffff;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* HERO */
+
+.about {
+  background-color: #fff;
+  width: 95%;
+  margin: 10% auto;
+}
+
+.hero {
+  width: 100%;
+}
+
+.hero-content {
+  width: 66%;
+  margin: 0 auto;
+  margin-top: 6%;
+}
+
+.hero-content h1 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  color: #000000;
+}
+
+
+.hero-content p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-size: 30px;
+  color: #000000;
+}
+
+
+@media (max-width: 768px) {
+
+
+  .hero {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+
+  .hero-content {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 6%;
+
+  }
+
+  .hero-content button {
+    margin-top: 20px;
+  }
+
+  .about-text p {
+
+    width: 22pc;
+  }
+
+
+  .project-text p {
+    width: 23pc;
+  }
+
+  .btn-secondary {
+    margin-top: 20px;
+    padding: 10px 30px !important;
+  }
+}
+
+.home-btn {
+  display: none;
+
+}
+
+.project-text {
+  margin-right: 70px;
+}
+
+.project-img {
+  height: 21pc;
+  overflow: hidden;
+  margin-right: 30px;
+}
+
+.portfolio {
+  padding: 2px;
+}
+
+
+
+.card {
+  width: 500px;
+}
+
+
+
+/* CTA Button */
+.cta-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+
+}
+
+/* ============================
+  About Section Styles
+============================ */
+
+.about {
+  background-color: #fff;
+  width: 90%;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-img {
+  width: 190px;
+  border-radius: 100px;
+  background-color: #000;
+  height: 200px;
+}
+
+.about-text {
+  flex: 1;
+
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #000;
+  color: #fff;
+  margin-top: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #333;
+}
+
+
+/* ============================
+  Portfolio Section Styles
+  ============================ */
+.portfolio {
+  padding: 20px;
+  background-color: #fdfdfd;
+
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #000;
+  margin-left: 10px;
+}
+
+.project {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+
+}
+
+.project-img {
+  flex: 1 1 300px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  height: 15pc;
+
+}
+
+.project-img img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.project-text {
+  flex: 2 1 500px;
+}
+
+.project-text h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.project-text p {
+  font-size: 1rem;
+  color: #444;
+  margin-top: 20px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+
+}
+
+.card-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  width: 370px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playground-container {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+
+  .playground-container {
+    width: 96%;
+    margin: 0 auto !important;
+  }
+
+  .card-grid {
+    flex-wrap: wrap;
+  }
+}
+
+footer {
+  background-color: var(--dark-bg);
+  color: var(--white);
+  padding: 30px 0;
+  text-align: center;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+/* ================ GLOBAL ANIMATIONS ================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  animation: fadeIn 1s ease-out;
+}
+
+/* ================ NAVBAR ANIMATIONS ================ */
+
+@keyframes colorfulFadeIn {
+  from {
+    opacity: 0;
+    background-color: transparent;
+    box-shadow: none;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientPulse {
+  0% {
+    color: var(--primary-color);
+    transform: scale(1);
+  }
+
+  50% {
+    color: var(--secondary-color);
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+  }
+
+  100% {
+    color: var(--primary-color);
+    transform: scale(1);
+  }
+}
+
+.nav-logo a {
+  display: inline-block;
+  animation: gradientPulse 4s ease-in-out infinite;
+}
+
+.nav-link {
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: var(--transition);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* ================ HERO SECTION ANIMATIONS ================ */
+.hero-content {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-btn {
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
+}
+
+.cta-btn:hover::before {
+  left: 100%;
+}
+
+/* ================ ABOUT SECTION ANIMATIONS ================ */
+.about-content {
+  animation: fadeIn 1s ease-out 0.4s both;
+}
+
+.about-img {
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 15px 30px rgba(44, 62, 80, 0.2);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.btn-secondary {
+  transition: var(--transition);
+  position: relative;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-secondary::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  z-index: -1;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover::after {
+  opacity: 0.1;
+}
+
+/* ================ PORTFOLIO ANIMATIONS ================ */
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.section-title:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.project {
+  transition: var(--transition);
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.project:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.project:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+}
+
+.project-img {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.project-img img {
+  transition: transform 0.5s ease;
+}
+
+.project:hover .project-img img {
+  transform: scale(1.03);
+}
+
+/* ================ PLAYGROUND ANIMATIONS ================ */
+.title {
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background: var(--secondary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.title:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.card-grid {
+  animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(44, 62, 80, 0.7), rgba(231, 76, 60, 0.7));
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.card:hover::before {
+  opacity: 0.2;
+}
+
+.card img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+/* ================ FOOTER ANIMATIONS ================ */
+footer {
+  animation: fadeIn 1s ease-out 0.8s both;
+}
+
+.copyright {
+  position: relative;
+}
+
+.copyright::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: -10px;
+  left: 0;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.copyright:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ================ SCROLL REVEAL ANIMATIONS ================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
